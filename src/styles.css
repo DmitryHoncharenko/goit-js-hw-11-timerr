@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.timer {
+  margin: 100px auto;
+  display: flex;
+  flex-flow: row wrap;
+  width: 500px;
+  justify-content: space-between;
+  border: 1px solid wheat;
+  padding: 100px;
+}
+
+.field {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border: 1px solid wheat;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 30px;
+}
+.label {
+  font-size: 30px;
+}
