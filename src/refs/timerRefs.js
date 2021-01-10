@@ -1,7 +1,6 @@
 export default {
-  article: document.getElementById('#timer-1'),
-  days: document.querySelector('[data-value="days"]'),
-  hours: document.querySelector('[data-value="hours"]'),
-  mins: document.querySelector('[data-value="mins"]'),
-  seconds: document.querySelector('[data-value="secs"]'),
+  day: document.querySelector('[data-value="days"]'),
+  hour: document.querySelector('[data-value="hours"]'),
+  min: document.querySelector('[data-value="mins"]'),
+  sec: document.querySelector('[data-value="secs"]'),
 };

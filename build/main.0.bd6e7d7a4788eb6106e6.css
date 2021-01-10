@@ -1,1 +1,0 @@
-html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}.timer{margin:100px auto;flex-flow:row wrap;width:500px;justify-content:space-between;padding:100px}.field,.timer{display:flex;border:1px solid wheat}.field{flex-flow:column;align-items:center;padding:20px;border-radius:5px;margin:30px}.label{font-size:30px}

@@ -1,65 +1,42 @@
 import refs from "../refs/timerRefs.js";
-// console.log(refs);
-let day = `Dec 27 2021 08:00:00`
 
-function setTime(time) {
-  let days = Math.floor(time / 1000 / 60 / 60 / 24);
-  let hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((time % (1000 * 60)) / 1000);
-  return { days, hours, mins, seconds };
+class CountdownTimer {
+  constructor(selector, targetDate) {
+    this.$el = document.querySelector(selector);
+    this.targetDate = targetDate;
+  }
+  updateClockItems(time) {
+    const pad = this.pad;
+
+    const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+    const hours = pad(
+      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    );
+    const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+    const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+
+    refs.day.textContent = `${days}`;
+    refs.hour.textContent = `${hours}`;
+    refs.min.textContent = `${mins}`;
+    refs.sec.textContent = `${secs}`;
+  }
+
+  pad(value) {
+    return String(value).padStart(2, '0');
+  }
+  loadingTimer = setInterval(() => {
+    const startTime = Date.now();
+    let diff = this.targetDate - startTime;
+    this.updateClockItems(diff);
+  }, refs.sec);
 }
-function reset(...arr) {
-  return arr.map(el => (el.textContent = '00'));
-}
 
-function myTimer(date, object) {
-  let timeBetween = new Date(date) - Date.now();
-  let x = setTime(timeBetween);
-  console.log(x);
+new CountdownTimer(
+  ...Object.values({
+    selector: '#timer-1',
+    targetDate: new Date('Jul 17, 2021'),
+  }),
+);
 
-  object.days.textContent = x.days;
-  object.hours.textContent = x.hours;
-  object.mins.textContent = x.mins;
-  object.seconds.textContent = x.seconds;
-}
-let interval;
-
- class Timer {
-   constructor(date, obj) {
-     this.date = date;
-     this.refs = obj;
-   }
-   count() {
-     let x = setTime(new Date(this.date) - Date.now());
-     console.log(x);
-     this.refs.days.textContent = x.days;
-     this.refs.hours.textContent = x.hours;
-     this.refs.mins.textContent = x.mins;
-     this.refs.seconds.textContent = x.seconds;
-     //
-   }
-
-   start() {
-     interval = setInterval(() => {
-       this.count();
-     }, 1000);
-   }
-   stop() {
-     const { days, hours, mins, seconds } = this.refs;
-     clearInterval(interval);
-     reset(days, hours, mins, seconds);
-   }
- }
- const timer = new Timer(day, refs);
- console.log(timer);
-
-
-   interval = setInterval(() => {
-     myTimer(day, refs);
-   }, 1000);
-
-//    clearInterval(interval);
-//    reset(refs.days, refs.hours, refs.mins, refs.seconds);
 
 

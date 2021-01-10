@@ -9,13 +9,11 @@ html {
 }
 
 .timer {
-  margin: 100px auto;
   display: flex;
-  flex-flow: row wrap;
-  width: 500px;
-  justify-content: space-between;
+  margin: 100px auto;
+  width: 600px;
   border: 1px solid wheat;
-  padding: 100px;
+  padding: 50px;
 }
 
 .field {
@@ -25,7 +23,7 @@ html {
   border: 1px solid wheat;
   padding: 20px;
   border-radius: 5px;
-  margin: 30px;
+  
 }
 .label {
   font-size: 30px;
